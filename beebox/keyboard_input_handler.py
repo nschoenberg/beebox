@@ -4,22 +4,6 @@
 import sys
 import evdev
 from evdev import InputDevice, categorize, ecodes
-from time import sleep
-
-
-devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
-
-if (len(devices) == 0):
-    sys.exit("No input devices found")
-
-for device in devices:
-    print(device.path, device.name, device.phys)
-
-# TODO: Make it configurable which input device to select. If nothing is configured, select first if any
-print("--------")
-print("Selected device:")
-dev = InputDevice(devices[0].path)
-print(dev)
 
 scancodes = {
     # Scancode: ASCIICode
@@ -31,16 +15,17 @@ scancodes = {
     50: u'M', 51: u',', 52: u'.', 53: u'/', 54: u'RSHFT', 56: u'LALT', 100: u'RALT'
 }
 
-EXIT_CODE = "0011043608"
-
 code_buffer = []
 code = ""
 current_key = ""
 
-while code != EXIT_CODE:
+def read():
+    devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
+    dev = InputDevice(devices[0].path)
+
     code_buffer.clear()
     current_key = ""
-    
+
     for event in dev.read_loop():
         if event.type == ecodes.EV_KEY:
             current_key = ecodes.KEY[event.code]
@@ -52,6 +37,9 @@ while code != EXIT_CODE:
                     code_buffer.append(scancodes[event.code])
     
     code = "".join(code_buffer)
-    print(code)
+    dev.close()
+    return code
 
-dev.close()
+if __name__ == '__main__':
+    code = read()
+    print(code)
