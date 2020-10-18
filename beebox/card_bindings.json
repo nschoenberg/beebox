@@ -1,0 +1,23 @@
+{
+    "0010333885": {
+      "id": "0010333885",
+      "is_playlist" : false,
+      "desc": "Bibi auf dem Reiterhof",
+      "uri": "bibi",
+      "index": 1
+    },
+    "0005370535": {
+      "id": "0005370535",
+      "is_playlist" : true,
+      "desc": "Radio Hamburg",
+      "uri": "webradio",
+      "index": 1
+    },
+    "0003847812": {
+      "id": "0003847812",
+      "is_playlist" : true,
+      "desc": "Radio Teddy",
+      "uri": "webradio",
+      "index": 2
+    }
+  }
