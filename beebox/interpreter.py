@@ -4,7 +4,7 @@ from collections import namedtuple
 from enum import Enum
 
 InterpreterResult = namedtuple("InterpreterResult", "action arg")
-Action = Enum("Action", "none play play_mpd terminate")
+Action = Enum("Action", "none play play_mpd text2speech terminate")
 
 EXIT_CODE = "0011043608"
 
@@ -16,12 +16,12 @@ def interpret(code):
         result = InterpreterResult(Action.terminate, "")
     elif (code == "0010455958"):
         result = InterpreterResult(Action.play, "test.wav")
-    elif (card != "None"): #Bibi
-        result = InterpreterResult(Action.play_mpd, card)
-#0005370535 # Radio Hamburg
-#0003847812 # Radio Teddy
-#0010397350 # Radio Teddy Gn8 Stories
+    elif (card != "None"):
+        action = Action.play_mpd
+        if (card["kind"] in Action.__members__):
+            action = Action[card["kind"]]
 
+        result = InterpreterResult(action, card)
     else:
         result = InterpreterResult(Action.play, code + ".wav")
     

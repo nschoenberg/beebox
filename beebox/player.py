@@ -15,6 +15,13 @@ def play_mpd(uri, index=1, isPlaylist=False):
     else:
         client.add(uri)
     
-    client.play(index)
+    print(uri)
+    print(index)
+
+    if (index == 1):
+        client.play()
+    else:
+        client.play(index)
+    
     client.close()                     # send the close command
     client.disconnect()                # disconnect from the server
