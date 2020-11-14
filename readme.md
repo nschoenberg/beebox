@@ -5,6 +5,8 @@
 - Aplay (command line sound)
 - mpd / mpc
 - pip3 install python-mpd2
+- sudo apt install python3-gpiozero
+
 
 # Hardware
 - pi zero w
