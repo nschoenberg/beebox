@@ -2,30 +2,63 @@ from gpiozero import Button
 from signal import pause
 from subprocess import check_call
 
-def red_pressed():
-    print("red pressed")
+def power_button_pressed():
+    print("power pressed")
 
-def red_released():
-    print("red released")
+def power_button_released():
+    print("power released")
 
-def red_held():
+def power_button_held():
     print("shutdown")
     check_call(['sudo', 'poweroff'])
 
-def green_pressed():
-    print("green pressed")
+def play_button_pressed():
+    print("play pressed")
 
-def green_released():
-    print("green released")
+def play_button_released():
+    print("play released")
 
-red_button = Button(23, hold_time=3)
-red_button.when_pressed = red_pressed
-red_button.when_released = red_released
-red_button.when_held = red_held
+def play_button_held():
+    print("play held")
 
-green_button = Button(3)
-green_button.when_pressed = green_pressed
-green_button.when_released = green_released
+def next_button_pressed():
+    print("next pressed")
+
+def next_button_released():
+    print("next released")
+
+def next_button_held():
+    print("next held")
+
+def previous_button_pressed():
+    print("previous pressed")
+
+def previous_button_released():
+    print("previous released")
+
+def previous_button_held():
+    print("previous held")
 
 
-pause()
+power_button = Button(23, hold_time=3)
+power_button.when_pressed = power_button_pressed
+power_button.when_released = power_button_released
+power_button.when_held = power_button_held
+
+play_button = Button(3, hold_time=3)
+play_button.when_pressed = play_button_pressed
+play_button.when_released = play_button_released
+play_button.when_held = play_button_held
+
+next_button = Button(25, hold_time=3)
+next_button.when_pressed = next_button_pressed
+next_button.when_released = next_button_released
+next_button.when_held = next_button_held
+
+previous_button = Button(7, hold_time=3)
+previous_button.when_pressed = previous_button_pressed
+previous_button.when_released = previous_button_released
+previous_button.when_held = previous_button_held
+
+
+# pause()

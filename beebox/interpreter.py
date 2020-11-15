@@ -9,6 +9,9 @@ Action = Enum("Action", "none play play_mpd text2speech terminate")
 EXIT_CODE = "0011043608"
 
 def interpret(code):
+    if (not code):
+        return InterpreterResult(Action.none, "")
+    
     print("Startint to interpret code:" + code)
     card = get_card_binding(code)
 

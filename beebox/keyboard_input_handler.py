@@ -19,8 +19,16 @@ code_buffer = []
 code = ""
 current_key = ""
 
-def read():
+def can_read():
     devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
+    return len(devices) > 0
+
+def read():
+    if (not can_read()):
+        raise Exception("Unable to read from input device. RFID Reader connected?")
+
+    devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
+    
     dev = InputDevice(devices[0].path)
 
     code_buffer.clear()

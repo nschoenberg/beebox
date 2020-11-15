@@ -3,13 +3,16 @@ import keyboard_input_handler
 import interpreter
 import player
 import speek
+import button_controller
 
 code = ""
 
 while True:
     # Read rfid code or manual input
-    code = keyboard_input_handler.read()
-    print(code)
+    if (keyboard_input_handler.can_read()):
+        code = keyboard_input_handler.read()
+        print(code)
+    
     interpreted = interpreter.interpret(code)
     
     if (interpreted.action == interpreter.Action.play):
