@@ -23,7 +23,7 @@
     "0010397350" : {
       "id": "0010397350",
       "kind" : "text2speech",
-      "desc": "Hallo Maja, es ist %time% Uhr. %weather_info%",
+      "desc": "Hallo Maja, es ist %time%. %weather_info%",
       "uri": "speech.wav",
       "index": 1
     }

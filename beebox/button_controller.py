@@ -1,6 +1,7 @@
 from gpiozero import Button
 from signal import pause
 from subprocess import check_call
+import player
 
 def power_button_pressed():
     print("power pressed")
@@ -16,6 +17,7 @@ def play_button_pressed():
     print("play pressed")
 
 def play_button_released():
+    player.toggle_pause()
     print("play released")
 
 def play_button_held():

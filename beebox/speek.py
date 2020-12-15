@@ -28,8 +28,8 @@ def to_file(text):
     if (text.find("%weather_info%") != -1):
         text = text.replace("%weather_info%", weather.get_description())
     
-    text = text.replace("ä", "ae").replace("ö", "oe").replace("ü", "ue")
-    # print(text)
+    text = text.lower().replace("ä", "ae").replace("ö", "oe").replace("ü", "ue")
+    print(text)
     response = requests.post(speech_service_url, headers=headers,data=voice_template.format(text))
     if (response.status_code == 200):
         with open("/var/lib/mpd/music/speech.wav", "wb") as fd:
