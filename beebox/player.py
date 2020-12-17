@@ -6,7 +6,7 @@ def play(file):
     subprocess.run(["aplay", file])
 
 def play_mpd(uri, index=1, isPlaylist=False):
-    client = __get_connected_client();
+    client = __get_connected_client()
     client.clear()
     
     if (isPlaylist):
@@ -24,15 +24,24 @@ def play_mpd(uri, index=1, isPlaylist=False):
     
     __disconnect_client(client)
  
+def stop():
+    client = __get_connected_client()
+    client.stop()
+    __disconnect_client(client)
+
+def next():
+    client = __get_connected_client()
+    client.next()
+    __disconnect_client(client)
+
+def previous():
+    client = __get_connected_client()
+    client.previous()
+    __disconnect_client(client)
+
 def toggle_pause():
     client = __get_connected_client()
-    status = client.status()
-    print(status)
-    if (status == "play"):
-        client.pause()
-    elif (status == "pause"):
-        client.play()
-    
+    client.pause()
     __disconnect_client(client)
 
 def __get_connected_client():

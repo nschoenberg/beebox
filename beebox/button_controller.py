@@ -15,9 +15,9 @@ def power_button_held():
 
 def play_button_pressed():
     print("play pressed")
+    player.toggle_pause()
 
 def play_button_released():
-    player.toggle_pause()
     print("play released")
 
 def play_button_held():
@@ -25,6 +25,7 @@ def play_button_held():
 
 def next_button_pressed():
     print("next pressed")
+    player.next()
 
 def next_button_released():
     print("next released")
@@ -33,6 +34,7 @@ def next_button_held():
     print("next held")
 
 def previous_button_pressed():
+    player.previous()
     print("previous pressed")
 
 def previous_button_released():
