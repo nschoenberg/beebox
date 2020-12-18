@@ -18,7 +18,7 @@ GPIOs 18-21 (pins 12, 35, 38 and 40) are used for the sound interface. GPIO16 ca
 
 Source: https://www.hifiberry.com/docs/hardware/gpio-usage-of-hifiberry-boards/
 
-## button controler
+## button controller
 GPIO 3 (PIN 5) + Ground PIN 6 is used by the play button. When the system is in halt mode, this button wakes up the system.
 
 GPIO 23 (PIN 16) + Ground PIN 14 is used by the power button.
