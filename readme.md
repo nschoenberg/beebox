@@ -26,3 +26,8 @@ GPIO 23 (PIN 16) + Ground PIN 14 is used by the power button.
 GPIO 25 (PIN 22) + Ground PIN 20 is used for the next button.
 
 GPIO 7 (PIN 26) + Ground PIN 25 is used for the previous button.
+
+# Pictures 
+![Hardware](https://raw.githubusercontent.com/nschoenberg/beebox/master/hardware.png)
+
+![GPIO](https://raw.githubusercontent.com/nschoenberg/beebox/master/hifiberrymini_gpio_cheatsheet.png)
