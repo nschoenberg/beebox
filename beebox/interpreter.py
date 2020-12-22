@@ -8,10 +8,11 @@ Action = Enum("Action", "none play play_mpd text2speech terminate")
 
 EXIT_CODE = "0011043608"
 
+
 def interpret(code):
     if (not code):
         return InterpreterResult(Action.none, "")
-    
+
     print("Startint to interpret code:" + code)
     card = get_card_binding(code)
 
@@ -27,8 +28,9 @@ def interpret(code):
         result = InterpreterResult(action, card)
     else:
         result = InterpreterResult(Action.play, code + ".wav")
-    
+
     return result
+
 
 def get_card_binding(cardId):
     bindings = get_card_bindings()
@@ -36,8 +38,8 @@ def get_card_binding(cardId):
         card = bindings[cardId]
         return card
 
+
 def get_card_bindings():
     with open("./beebox/card_bindings.json") as f:
         data = json.load(f)
         return data
-
