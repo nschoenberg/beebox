@@ -1,7 +1,7 @@
 # Dependencies
 - Python 3.9
 - python3-pip
-- python-evdev
+- python3-evdev
 - Aplay (command line sound, used for startup sound)
 - mpd / mpc
 - pip3 install python-mpd2 (Also do sudo -H pip3 install python-mpd2 if you want to use launcher.sh)
