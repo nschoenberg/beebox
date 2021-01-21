@@ -1,3 +1,6 @@
 __pycache__/
 **/speek_secret
 **/weather_secret
+log.txt
+shutdown.wav
+startup.wav
