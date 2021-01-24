@@ -7,6 +7,9 @@
 - pip3 install python-mpd2 (Also do sudo -H pip3 install python-mpd2 if you want to use launcher.sh)
 - sudo apt-get install python3-gpiozero
 
+# Configuration
+launcher requires an alias to change into the root directory of the script
+alias cdbeebox='cd /home/pi/share/beebox/'
 
 # Hardware
 - pi zero w
