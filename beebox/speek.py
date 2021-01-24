@@ -14,7 +14,7 @@ headers = {
     "User-Agent" : "curl"
 }
 
-def to_file(text):
+def to_file(text, file="speech.wav"):
     global subscription_key
     if not subscription_key:
         print("Trying to read azure cognitive services subscribtion key from file")
@@ -31,13 +31,17 @@ def to_file(text):
     text = text.lower().replace("ä", "ae").replace("ö", "oe").replace("ü", "ue")
     print(text)
     response = requests.post(speech_service_url, headers=headers,data=voice_template.format(text))
+    target_dir = "/var/lib/mpd/music/"
+    target_file = target_dir + file
+
     if (response.status_code == 200):
-        with open("/var/lib/mpd/music/speech.wav", "wb") as fd:
+        with open(target_file, "wb") as fd:
             fd.write(response.content)
     else:
         print(response.status_code)
         print(response.reason)
 
+    return file
 
 def get_time():
     now = datetime.now()

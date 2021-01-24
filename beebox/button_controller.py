@@ -11,6 +11,7 @@ def power_button_released():
 
 def power_button_held():
     print("shutdown")
+    player.play_mpd("shutdown.wav")
     check_call(['sudo', 'poweroff'])
 
 def play_button_pressed():
