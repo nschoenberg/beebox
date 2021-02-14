@@ -32,12 +32,27 @@ def stop():
 
 def next():
     client = __get_connected_client()
-    client.next()
+    status = client.status()
+    idx_current_song = int(status["song"])
+    playlist_length = int(status["playlistlength"])    
+ 
+    can_play_next = (idx_current_song + 1) < playlist_length
+    
+    if (can_play_next):
+        client.next()
+
     __disconnect_client(client)
 
 def previous():
     client = __get_connected_client()
-    client.previous()
+    status = client.status()
+    idx_current_song = int(status["song"])
+ 
+    can_play_prev = idx_current_song > 0
+    
+    if (can_play_prev):
+        client.previous()
+
     __disconnect_client(client)
 
 def say(text):

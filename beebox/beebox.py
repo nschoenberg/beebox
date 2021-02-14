@@ -5,7 +5,7 @@ import player
 import speek
 import button_controller
 import logger
-
+import shared
 
 logger = logger.create_logger()
 
@@ -16,9 +16,14 @@ while True:
         # Read rfid code or manual input
         if (keyboard_input_handler.can_read()):
             code = keyboard_input_handler.read()
-            print(code)
+            print("Scanned code: " + code)
             logger.info("Scanned code: " + code)
         
+        print("last code:" + shared.last_code)
+
+        if (code == shared.last_code):
+            continue
+
         interpreted = interpreter.interpret(code)
         
         if (interpreted.action == interpreter.Action.play):
@@ -38,4 +43,6 @@ while True:
     except Exception as error:
             logger.exception("Unexpected error occured")
             code = ""
+    finally:
+        shared.last_code = code
 
