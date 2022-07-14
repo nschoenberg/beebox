@@ -1,3 +1,5 @@
+![Hardware](https://raw.githubusercontent.com/nschoenberg/beebox/master/box.jpg)
+
 # Dependencies
 - Python 3.9
 - python3-pip
